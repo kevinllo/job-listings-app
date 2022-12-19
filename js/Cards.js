@@ -1,6 +1,6 @@
 
 export default function Cards(data) {
-  document.querySelector('#section').innerHTML = data.map(elem => `
+  document.querySelector('#section').innerHTML = data.map((elem, key) => `
  <div class = "cards" ${!elem.new ? `style="border-left:none"` : ""}>
     <div class="profile-description">
     <div class="img-container">
@@ -25,15 +25,13 @@ export default function Cards(data) {
      </div>
  </div>
 </div>
-<div class="profile-skills">
+<div class="profile-skills" id="${key}">
 
 <span>${elem.role}</span>
 <span>${elem.level}</span>
   ${elem.languages.length > 0 ? elem.languages.map(e => `<span>${e}</span>`).join(' ') : ""}
   ${elem.tools.length > 0 ? elem.tools.map(e => `<span>${e}</span>`).join(' ') : ""}
 </div>
-
-
 </div>
  `).join('');
 }
